@@ -161,7 +161,7 @@ class TomeRater:
 	
 	def get_n_most_read_books(self, n):
 		sorted_books = sorted(self.books, key=self.books.__getitem__, reverse=True)
-		return sorted_books[:n-1]
+		return sorted_books[:n]
 	
 	def highest_rated_book(self):
 		highest_avg_rating = 0
