@@ -28,7 +28,10 @@ class User(object):
     	for book, rating in self.books.items():
     		if rating != None:
     			total += rating
-    	return total/len(self.books)
+    	if len(self.books) > 0:
+    		return total/len(self.books)
+    	else:
+    		return total
         	
 class Book(object):
 	def __init__(self, title, isbn):
@@ -68,8 +71,12 @@ class Book(object):
 	def get_average_rating(self):
 		total = 0
 		for rating in self.ratings:
-			total += rating
-		return total/len(self.ratings)
+			if rating != None:
+				total += rating
+		if len(self.ratings) > 0:
+			return total/len(self.ratings)
+		else:
+			return total
 			
 class Fiction(Book):
 	def __init__(self, title, author, isbn):
@@ -126,21 +133,25 @@ class TomeRater:
 			self.books[book] = 1
 	
 	def add_user(self, name, email, user_books=None):
-		valid_email_check = ["@", ".com", ".org", ".edu", ".co.uk"]
+		valid_email_check = "@"
+		valid_email_check_other = [".com", ".edu", ".org", ".co.uk"]
 		valid_email = 0
-		for item in valid_email_check:
-			if item in email:
-				valid_email += 1
-		if valid_email >= 2:
-			if email not in self.users:
-				self.users[email] = User(name, email)
-				if user_books != None:
-					for book in user_books:
-						self.add_book_to_user(book, email)
+		if valid_email_check in email:
+			for item in valid_email_check_other:
+				if item in email:
+					valid_email += 1
+			if valid_email == 1:
+				if email not in self.users:
+					self.users[email] = User(name, email)
+					if user_books != None:
+						for book in user_books:
+							self.add_book_to_user(book, email)
+				else:
+					print("There is already a user with email: {email}, please try adding a new user.".format(email=email))
 			else:
-				print("There is already a user with email: {email}, please try adding a new user.".format(email=email))
+				print("You've not entered a valid email address, please check!")
 		else:
-			print("You've not entered a valid email address, please check!")
+				print("You've not entered a valid email address, please check!")
 
 	def print_catalog(self):
 		for book in self.books.keys():
@@ -176,7 +187,7 @@ class TomeRater:
 	def most_positive_user(self):
 		highest_avg_rating = 0
 		most_positive_user = ""
-		for email, user in self.users.items():
+		for user in self.users.values():
 			avg_rating = user.get_average_rating()
 			if avg_rating > highest_avg_rating:
 				highest_avg_rating = avg_rating

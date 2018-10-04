@@ -23,6 +23,7 @@ Tome_Rater.add_user("David Marr", "david@computation.org")
 
 #Add a user with an invalid email address (extra extension exercise):
 Tome_Rater.add_user("Bob Johnson", "bobby&johnson.co.uk")
+Tome_Rater.add_user("John Bobson", ".com@.co.uk.not.a.real.email_:)")
 
 #Add books to a user one by one, with ratings:
 Tome_Rater.add_book_to_user(book1, "alan@turing.com", 1)
