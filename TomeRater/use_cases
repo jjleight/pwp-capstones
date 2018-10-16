@@ -1,0 +1,33 @@
+x Can instantiate User class
+x Can get email for user
+x Can change email for user
+x Can read book without rating for user
+x Can read book with rating for user
+x Can get average rating for user
+x Can get average rating for user when no ratings
+
+x Can instantiate Book class
+x Can get title for book
+x Can get isbn for book
+x Can set isbn for book
+x Can add rating for book
+x Can get average rating for book
+x Can get average rating for book when no ratings
+
+x Can instantiate Fiction class
+x Can get title for fiction
+x Can get isbn for fiction
+x Can get author for fiction
+x Can get average rating for fiction
+x Can get average rating for fiction when no ratings
+
+- Can instantiate NonFiction class
+- Can get title for non-fiction
+- Can get isbn for non-fiction
+- Can get subject for non-fiction
+- Can get level for non-fiction
+- Can get average rating for non-fiction
+- Can get average rating for non-fiction when no ratings
+
+- Can instantiate TomeRater class
+-
