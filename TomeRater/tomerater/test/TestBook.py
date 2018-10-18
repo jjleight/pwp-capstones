@@ -16,10 +16,6 @@ def test_CanSetIsbnForBook(book):
     book.set_isbn(987654321)
     assert book.get_isbn() == 987654321
 
-def test_CanAddRatingForBook(book):
-    book.add_rating(2)
-    assert book.ratings == [2]
-
 def test_CanGetAverageRatingForBook(book):
     book.add_rating(2)
     book.add_rating(4)

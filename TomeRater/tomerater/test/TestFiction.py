@@ -20,5 +20,5 @@ def test_CanGetAverageRatingForFiction(fiction):
     fiction.add_rating(4)
     assert fiction.get_average_rating() == 3
 
-def test_CanGetAverageRatingForBookWithNoRatings(fiction):
+def test_CanGetAverageRatingForFictionWithNoRatings(fiction):
     assert fiction.get_average_rating() == 0
