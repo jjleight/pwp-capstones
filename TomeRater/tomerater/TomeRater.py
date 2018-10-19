@@ -136,25 +136,33 @@ class TomeRater:
 			self.books[book] = 1
 	
 	def add_user(self, name, email, user_books=None):
-		valid_email_check = "@"
-		valid_email_check_other = [".com", ".edu", ".org", ".co.uk"]
-		valid_email = 0
-		if valid_email_check in email:
-			for item in valid_email_check_other:
-				if item in email:
-					valid_email += 1
-			if valid_email == 1:
-				if email not in self.users:
-					self.users[email] = User(name, email)
-					if user_books != None:
-						for book in user_books:
-							self.add_book_to_user(book, email)
-				else:
-					print("There is already a user with email: {email}, please try adding a new user.".format(email=email))
+		if self.valid_email(email):
+			if email not in self.users:
+				self.users[email] = User(name, email)
+				if user_books is not None:
+					for book in user_books:
+						self.add_book_to_user(book, email)
 			else:
-				print("You've not entered a valid email address, please check!")
+				print("There is already a user with email: {email}, please try adding a new user.".format(email=email))
 		else:
 			print("You've not entered a valid email address, please check!")
+
+	def valid_email(self, email):
+		valid_email_check = [".com", ".edu", ".org", ".co.uk"]
+		valid_email = 0
+		email_split = email.split('@')
+		if len(email_split) == 2:
+			for check in valid_email_check:
+				if check in email_split[0]:
+					return False
+				elif check in email_split[1]:
+					valid_email += 1
+			if valid_email == 1:
+				return True
+			else:
+				return False
+		else:
+			return False
 
 	def print_catalog(self):
 		for book in self.books.keys():

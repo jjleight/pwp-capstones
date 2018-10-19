@@ -33,10 +33,10 @@ x Can instantiate TomeRater class
 x Can create book
 x Can create novel
 x Can create non-fiction
-- Can add new user with no books
-- Can add new user with books
-- Cannot add user with an existing email
-- Cannot add user with an invalid email
+x Can add new user with no books
+x Can add new user with books
+x Cannot add user with an existing email
+x Cannot add user with an invalid email
 - Can get the most read book
 - Can get the most 1 read books
 - Can get the most 2 read books
